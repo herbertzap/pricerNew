@@ -44,7 +44,7 @@
                   <!-- Columna 3: Video de YouTube -->
                   <div class="col-12 col-md-5 text-center">
                      <div class="ratio ratio-16x9">
-                        <iframe src="https://www.youtube.com/embed/ScMzIvxBSi4" title="Video institucional" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/2_3dfpphhUI" title="Video institucional" allowfullscreen></iframe>
                      </div>
                   </div>
                </div>

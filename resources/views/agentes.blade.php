@@ -72,7 +72,7 @@
                         <div class="col-12 col-md-12">
                      <h2 class="fw-bold">Esto incluye:</h2>
                      <ul>
-                        <li>Planificación y Coordinación Inicial: Asesoría y planificación del proceso logístico según las necesi- dades del cliente.</li>
+                        <li>Planificación y Coordinación Inicial: Asesoría y planificación del proceso logístico según las necesidades del cliente.</li>
                         <li>Transporte: Transporte terrestre, marítimo o aéreo desde el lugar de origen hasta el destino final.</li>
                         <li>Gestión Aduanera: Trámites aduaneros tanto en el país de origen como en el de destino.</li>
                         <li>Almacenamiento y Manejo de Inventario: Servicios de almacenamiento intermedio si es necesario, con control de inventarios.</li>
@@ -92,7 +92,7 @@
         </main>
    </div>
 </div>
-@include('layouts.footer')
+@include('layouts.footer-agentes')
 <script>
 document.addEventListener('DOMContentLoaded', function () {
     const counters = document.querySelectorAll('.counter');

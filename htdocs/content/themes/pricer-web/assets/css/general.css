@@ -87,6 +87,7 @@ p, li, a {
 #primary {
     margin-top: 3rem;
 }
+
 .font-bold {
     font-weight: 700 !important;
 }
@@ -156,8 +157,14 @@ li.menu-item.menu-item-gtranslate {
     text-decoration: none;
     transition: color 0.3s ease;
 }
+
 .menu-item a:hover {
-    color: #007bff;
+    color: #0f1b2a !important;
+    background: #fff;
+}
+
+a:visited {
+    color: #fff !important;
 }
 
 .container {
@@ -175,6 +182,15 @@ li.menu-item.menu-item-gtranslate {
     overflow: hidden;
 }
 
+.hero-section a {
+    color: #ffff;
+    text-decoration: none;
+}
+
+.hero-section a:hover {
+    color: #0f1b2a !important;
+    background: #fff;
+}
 
 .hero-left,
 .hero-right {
@@ -422,7 +438,6 @@ li.menu-item.menu-item-gtranslate {
 }
 
 .cliente-logo:hover {
-    filter: none;
     transform: scale(1.07);
 }
 
@@ -560,6 +575,12 @@ li.menu-item.menu-item-gtranslate {
 .service-logistico{
     background: url('/content/uploads/Servicios_Logisticos.jpg') center center/cover no-repeat;
 }
+.service-courier{
+        background: url('/content/uploads/Courier_Express.jpg') 100% 65% / cover no-repeat;
+}
+.service-courier img {
+    filter: invert(1);
+}
 .tab-content>.active{
     background: #e9ecef;
 }
@@ -598,10 +619,12 @@ li.menu-item.menu-item-gtranslate {
     padding: 0;
     margin: 0;
 }
-.text-service ul li{
-    margin-bottom: 1rem;
+.text-service ul li {
+    margin-bottom: 2rem;
     font-size: 1.1rem;
     font-weight: 500;
+    list-style: disc;
+    list-style-position: inside;
 }
 #serviciosTabContent {
     position: relative;
@@ -773,6 +796,18 @@ li.menu-item.menu-item-gtranslate {
 
 
 /* footer  */
+.footer-contacto-agentes{
+    padding: 80px 0 0px;
+    background: url('/content/uploads/Agentes_Abajo.jpg') center center/cover no-repeat;
+    color: #fff;
+    position: relative;
+}
+.footer-contacto-servicio{
+    padding: 80px 0 0px;
+    background: url('/content/uploads/Servicios_Abajo.jpg') center center/cover no-repeat;
+    color: #fff;
+    position: relative;
+}
 .footer-contacto{
     padding: 80px 0 0px;
     background: url('/content/uploads/Home_Abajo.jpg') center center/cover no-repeat;
@@ -785,7 +820,12 @@ li.menu-item.menu-item-gtranslate {
     color: #fff;
     position: relative;
 }
-
+.select-tipo-servicio {
+    display: none;
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
 input::placeholder {
     font-size: 1.5rem;
     font-weight: bold;
@@ -814,37 +854,47 @@ textarea{
 }
 
 .input-nombre {
-    background: url(../icons/Mail.svg) no-repeat 0.2rem center;
-    background-size: 80px 70px;
-    background-position: left center;
+    background: url('/content/uploads/icons/Icon_Nombre.svg') no-repeat 0.2rem center;
+    background-size: 38px 40px;
+    background-position: 2% center;
+    padding-left: 4.3rem !important;
+    border-radius: 0px !important;
+    font-size: 1em !important;
+    color: #0f1b2a !important;
+}
+.input-empresa {
+    background: url('/content/uploads/icons/Icon_Empresa.svg') no-repeat 0.2rem center;
+        background-size: 50px 50px;
+    background-position: 1% center;
     padding-left: 4.3rem !important;
     border-radius: 0px !important;
     font-size: 1em !important;
     color: #0f1b2a !important;
 }
 .input-email {
-    background: url('../icons/Mail.svg') no-repeat 0.2rem center;
-    background-size: 80px 70px;
-    background-position: left center;
+    background: url('/content/uploads/icons/Icon_Email.svg') no-repeat 0.2rem center;
+        background-size: 40px 40px;
+    background-position: 2% center;
     padding-left: 4.3rem !important;
     border-radius: 0px !important;
     font-size: 1em !important;
     color: #0f1b2a !important;
 }
 .input-telefono {
-    background: url('../icons/telefono.svg') no-repeat 0.2rem center;
-    background-size: 80px 70px;
-    background-position: left center;
+    background: url('/content/uploads/icons/Icon_Contaco.svg') no-repeat 0.2rem center;
+    background-size: 50px 40px;
+    background-position: 1% center;
     padding-left: 4.3rem !important;
     border-radius: 0px !important;
     font-size: 1em !important;
     color: #0f1b2a !important;
 }
 .input-mensaje {
-    background: url('../icons/Mail.svg') no-repeat 0.2rem 0.2rem;
-    background-size: 80px 70px;
-    padding-left: 4.3rem !important;
-    padding-top: 1.5rem !important;
+    background: url('/content/uploads/icons/Icon_Mensaje.svg') no-repeat 0.2rem 0.2rem;
+    background-position: 2% 1%;
+    background-size: 40px 56px;
+    padding-left: 3.5rem !important;
+    padding-top: 1rem !important;
     border-radius: 0px !important;
 }
 .ps-10 {
@@ -890,7 +940,7 @@ textarea{
 .service-btn .fw-bold {
     font-family: 'Semplicita Pro', Arial, sans-serif;
     font-weight: 700;
-    font-size: 1.5em;
+    font-size: 1em;
     letter-spacing: 0.5px;
     line-height: 1.1;
 }

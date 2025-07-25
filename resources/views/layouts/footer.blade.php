@@ -1,10 +1,22 @@
 </div><!-- #page -->
-<footer class="footer-contacto">
+<footer class="footer-contacto" id="footer-contacto">
         <div class="container py-5 fondo_f2">
             <div class="row">
                 <!-- Formulario -->
-                <div class="col-12 col-lg-6 mb-4 mb-lg-0">
+                <div class="col-12 col-lg-6 mb-4 mb-lg-0 conte-rrss">
                     {!! do_shortcode('[contact-form-7 id="6d43860" title="Formulario de contacto 1"]') !!}
+                    <!-- Redes sociales -->
+                    <div class="col-4 d-flex rrss">
+                        <a href="https://www.facebook.com/Pricer-CHILE-102149522418008" class="me-3" target="_blank">
+                            <img src="{{ home_url('/content/uploads/Facebook2.svg') }}" alt="Facebook">
+                        </a>
+                        <a href=https://www.instagram.com/pricerchile/" class="me-3" target="_blank">
+                            <img src="{{ home_url('/content/uploads/Instagram2.svg') }}" alt="Instagram">
+                        </a>
+                        <a href="https://www.linkedin.com/company/pricer" target="_blank">
+                            <img src="{{ home_url('/content/uploads/LinkedIn2.svg') }}" alt="LinkedIn">
+                        </a>
+                    </div>
                 </div>
                 <!-- Datos de contacto -->
                 <div class="col-12 col-lg-6 ps-10">
@@ -37,12 +49,6 @@
                     </div>
                     <!-- Repite para las otras sucursales -->
                 </div>
-            </div>
-            <!-- Redes sociales -->
-            <div class="d-flex justify-content-end mt-4">
-                <a href="https://facebook.com/" class="me-3" target="_blank"><i class="bi bi-facebook"></i></a>
-                <a href="https://instagram.com/" class="me-3" target="_blank"><i class="bi bi-instagram"></i></a>
-                <a href="https://linkedin.com/" target="_blank"><i class="bi bi-linkedin"></i></a>
             </div>
         </div>
         <div class="text-center py-3" style="background: #0a1420;">
