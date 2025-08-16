@@ -1,0 +1,375 @@
+FLUJO DE PROCESO LOGÍSTICO COMPLETO - SISTEMA DE SHIPPING Y LOGÍSTICA
+=====================================================================
+
+ANÁLISIS COMPLETO DEL DIAGRAMA BPMN - PROCESO LOGÍSTICO INTEGRAL
+================================================================
+
+ESTRUCTURA GENERAL DEL DIAGRAMA:
+- Organización horizontal en fases principales
+- Swimlanes verticales por actores/departamentos
+- Flujo progresivo de izquierda a derecha
+- Elementos visuales: rectángulos (actividades), diamantes (decisiones), círculos (eventos)
+
+ACTORES INVOLUCRADOS (SWIMLANES):
+1. Eventos / Milestones (superior)
+2. CSS / Oper. BD (Servicio al Cliente / Operaciones BD)
+3. Empresas Representadas SEA
+4. Agente de Origen
+5. Ventas SL
+6. Finanzas (inferior)
+
+================================================================
+FASE 1: CREACIÓN Y GESTIÓN INICIAL DE BOOKING
+================================================================
+
+EVENTOS DE INICIO:
+- Event: Nuevo Booking Creado
+- S/M Contrato Asignado
+- Event: Contacto con Procesos
+
+PROCESO DETALLADO:
+
+1.1 AGENTE DE ORIGEN:
+- Recepción de Solicitud del Shipper - Nuevo Embarque
+- Crear nuevo Booking
+- Guardar Shipper's Informational eDocs
+- Notificar CSS y Ventas SL de Booking creado
+- Sugerir hacer la información del Booking
+- Confirmar CSO
+- Booking Asignado
+
+1.2 CSS / OPER. BD:
+- Definir Service Level
+- Definir Fecha de Salida / Llegada
+- Verificar: ¿Es el día de Recepción Cliente Comercial?
+- Generar Quick Booking
+- Guardar Cliente Comercial / Datos de Embarque / Datos de eDocs
+- Asignar Contrato Booking Agente
+- Informar / Notificar de Booking Agente
+- Negociar Oferta con Cliente
+
+DECISIONES CRÍTICAS:
+- ¿Booking en firme?
+- ¿Servicio terrestre solicitado?
+- ¿Cliente acepta condiciones?
+
+1.3 VENTAS SL:
+- Si es un Cliente Nuevo, validar si es un Cliente Comercial o Cliente
+- Luz verde del Cliente de Ventas
+- Enviar Shipping Instruction al Cliente Comercial (CSS)
+- Solicitar Booking
+
+================================================================
+FASE 2: PREPARACIÓN Y CONFIRMACIÓN DE BOOKING
+================================================================
+
+EVENTOS:
+- Event: Booking Solicitado
+- Event: Booking Confirmado
+- Event: Data Out (DOC)
+- Event: Número Contenedor Asignado
+
+PROCESO DETALLADO:
+
+2.1 CSS / OPER. BD:
+- Recepción de Pre-Booking
+- Revisar Booking Cliente Comercial
+- Recepcionar Pre-Alerta de Aduanas, etc.
+- Confirmar Booking
+- Confirmar QBK - 48h CDN - BHP
+- Ingresar Datos Generales
+- Guardar Draft BL
+- Enviar Draft BL al Cliente
+- Enviar Draft BL al Agente
+- Informar Agente de Cambios
+- Informar Cliente próxima salida
+- Guardar Booking Confirmado (BKS)
+- Dirigir / Crear Schedule
+- Enviar Draft BL
+
+2.2 AGENTE DE ORIGEN:
+- Solicitar Booking a Carrier
+- Verificar: ¿Espacio Confirmado?
+- Si NO: Rechazar Embarque (Evento Final)
+- Si SÍ: Cliente acepta informe
+- Filtro Comercial STZ-QBK-Pacta Vencimiento
+
+DECISIONES CRÍTICAS:
+- ¿Cliente acepta condiciones?
+- ¿Espacio Confirmado?
+
+================================================================
+FASE 3: CARGA Y SALIDA DEL BUQUE
+================================================================
+
+EVENTOS:
+- Event: Freight Loaded (LCT)
+- M: Draft BL Confirmado
+- Event: Freight Departure (FCT)
+- M: Pre Alerta + Notificación de B/L Guardados
+
+PROCESO DETALLADO:
+
+3.1 CSS / OPER. BD:
+- Ingresar Datos Generales
+- Confirmar Despacho
+- Solicitar MBL
+- Disposicionar Pre-Alerta
+- Revisar Documentación Final
+- Solicitar / Guardar Pre-Alerta del Agente
+- Revisar Operaciones
+- Confirmar Zespe (ZPD)
+- Solicitar MBL (original)
+- Remitir MBL y DBL / Debit Note al Cliente de Origen
+- Guardar Debit Note en eDocs
+- Guardar B/L en eDocs
+- Guardar Pre-Alerta en eDocs
+- Confirmar Pre-Alerta
+- Enviar Draft BL al Carrier
+- Notificación de MBL y B/L de CRUCE
+- Recepcionar Número de Tracking
+
+NOTA IMPORTANTE: 48h/24h disposición para pre-alerta y cargos adicionales
+
+================================================================
+FASE 4: VENTA Y FACTURACIÓN
+================================================================
+
+EVENTOS:
+- M: Venta Pre-facturada
+- M: Factura de Venta Guardada
+- M: Notificación de Embarque Enviada
+- M: B/L Master Enviado
+- M: Transporte Asignado
+- M: Transport Booking Creado
+
+PROCESO DETALLADO:
+
+4.1 CSS / OPER. BD:
+- Reasignar Tema al Vendedor(a)?
+- Feedback Vendedor(a)
+- Ingresar Costos Venta
+- Facturar al Cliente
+- Cambiar status a DEV
+- Cambiar status a RSA
+- Asignar Transporte / Vendedor-OMS
+- Notificación a Ventas?
+- Solicitar Venta Terrestre
+- Creación Transport Booking
+- Factura-Credit Factory
+- Enviar Notificación de Embarque al Cliente
+- Cargar MBL Universal al eDocs (MBLU)
+- Entregar Carpeta a Operaciones y Ops
+- Hacer Solicitud de Pago al Cliente Comercial (FSC)
+
+4.2 FINANZAS:
+- Solicitar Pago a Finanzas
+- Filtro Pagos reportados
+- Confirmar Pago
+- Filtro Confirmar y guardar Facturas
+- Guardar Facturas en eDocs
+- Procesar Cobros Nuevos?
+
+DECISIONES CRÍTICAS:
+- ¿Billing en pérdida?
+- ¿Momento de facturar?
+
+NOTA IMPORTANTE: Confirmación de pago antes de enviar notificación de embarque
+
+================================================================
+FASE 5: ARRIBO Y DESCONSOLIDACIÓN
+================================================================
+
+EVENTOS:
+- Event: Arribo Confirmado
+- M: Aviso de Arribo Confirmado
+- M: DUA Confirmada
+- Event: Despacho Confirmado
+- Event: Gate Out
+- M: Desconsolidación
+
+PROCESO DETALLADO:
+
+5.1 CSS / OPER. BD:
+- Confirmar Llegada (ETA)
+- Notificar al Transportista
+- Seguimiento de Tracking
+- Facturación de Desconsolidación de Contenedor
+- Transferencia Bancaria y Carga de B/L
+- Hacer Solicitud
+- Hacer Scanneo
+- Guardar HBL Consignado y DUA en eDocs
+- Subir Carga HBL a eDocs
+- Confirmar DUA
+- Notificar al Cliente de DUA Confirmada
+- Solicitar Pago de DUA
+- Confirmar Pago
+- Guardar DUA en eDocs
+- Entregar DUA al Cliente
+- Entregar Carga al Cliente
+
+5.2 FINANZAS:
+- Solicitar Pago a Finanzas
+- Emitir Carta de Responsabilidad (CDR) y Carga Adicional con Comprobante de Pago
+- Consultora a Hacienda por fechas de pago de impuestos y aduanas
+- Adjuntar facturas de venta
+- Filtro Pagos Proveedor
+- Confirmar Pago
+- Guardar Aviso de Arribo, Carta de Cliente (FCL y LCL)
+- Dar 'OK' para entregar documentación
+- Procesar Capital con TSL (Transporte) y Comisión de Docs a FSL
+
+OPCIONES DE ENTREGA:
+- Opción 1: Entrega con Familia
+- Opción 2: Entrega sin Familia
+- Opción 3: Entrega con Transportista
+- Opción 4: Entrega en Almacén
+
+================================================================
+FASE 6: CIERRE FINAL Y DOCUMENTACIÓN
+================================================================
+
+EVENTOS:
+- Event: Devolución (SCT)
+- M: Venta Terminada / Procesada
+
+PROCESO DETALLADO:
+
+6.1 CSS / OPER. BD:
+- Guardar Documentos (Facturas, B/L, etc.)
+- Ingresar Costos / Gastos
+- Facturar al Cliente Terrestre
+- Entregar Factura
+- Generar Orden de Pago con impuestos, arancel e intereses
+- Recuperar / Generar Factura del Proveedor a FSL
+- Solicitar Factura de Proveedor
+- Registrar Factura Proveedor
+- Filtro Pagar Transportista y Proveedor
+- Filtro Descuento de 3 meses (NO se acepta más facturas de costos)
+- Cerrar Tráfico + CSO (Evento Final)
+
+6.2 FINANZAS:
+- Hacer Pago Transportista y Proveedor
+- Cerrar Tráfico + CSO
+
+================================================================
+ELEMENTOS VISUALES Y NOTACIONES ESPECÍFICAS
+================================================================
+
+COLORES UTILIZADOS EN EL DIAGRAMA:
+- AZUL: Actividades principales del proceso o acciones del sistema
+- AMARILLO: Eventos, milestones o actividades que requieren atención/confirmación específica
+- VERDE: Estados confirmados o resultados exitosos
+- NARANJA: Acciones específicas como "Procesar Pago"
+- GRIS: Información de soporte o actividades menos críticas
+- ROJO: Problemas críticos o puntos de terminación (ej: "Rechazar Embarque")
+
+TIPOS DE ELEMENTOS:
+- Rectángulos Redondeados: Tareas o acciones (ej: "Crear nuevo Booking", "Confirmar Booking")
+- Diamantes: Puntos de decisión o uniones (ej: "Booking en firme?", "¿Si cliente no está de acuerdo, notificar o renegociar?")
+- Círculos: Eventos de inicio, intermedios o finales (ej: "Event: Nuevo Booking Creado", "Event: Arribo Confirmado")
+- Formas de Documento: Objetos de datos o documentos (ej: "Shipper's Informational eDocs", "Draft BL")
+
+LÍNEAS Y CONEXIONES:
+- Líneas Punteadas: Flujos de mensajes o asociaciones entre elementos
+- Líneas Sólidas: Flujos de secuencia
+
+================================================================
+NOTAS IMPORTANTES Y ANOTACIONES ESPECÍFICAS
+================================================================
+
+NOTAS "IMPORTANTE" EN EL DIAGRAMA:
+1. Condiciones y plazos para pre-alerta y documentación
+2. Plazos máximos: "Max. 1h entre Creación Booking & Envío BL"
+3. "Plazo max. 24h post ETD"
+4. Confirmación de pago antes de enviar notificación de embarque
+
+PUNTOS CRÍTICOS DE DECISIÓN:
+1. "Booking en firme?" - Determina si el proceso continúa
+2. "Servicio terrestre solicitado?" - Afecta el flujo de servicios
+3. "Cliente acepta condiciones?" - Punto de validación comercial
+4. "Espacio Confirmado?" - Determina si se rechaza o continúa el embarque
+5. "Billing en pérdida?" - Afecta la facturación
+6. "Momento de facturar?" - Control de timing de facturación
+
+FILTROS ESPECÍFICOS:
+1. Filtro Comercial STZ-QBK-Pacta Vencimiento
+2. Filtro Pagos reportados
+3. Filtro Confirmar y guardar Facturas
+4. Filtro Pagos Proveedor
+5. Filtro Pagar Transportista y Proveedor
+6. Filtro Descuento de 3 meses
+
+================================================================
+DOCUMENTACIÓN Y ARCHIVOS DEL SISTEMA
+================================================================
+
+SISTEMA eDocs (Documentación Electrónica):
+- Shipper's Informational eDocs
+- Draft BL
+- Debit Note
+- B/L (Bill of Lading)
+- Pre-Alerta
+- HBL Consignado
+- DUA
+- Facturas de Venta
+- Facturas de Proveedor
+- Aviso de Arribo
+- Carta de Cliente (FCL y LCL)
+
+TIPOS DE B/L (BILL OF LADING):
+- Draft BL (Borrador)
+- MBL (Master Bill of Lading)
+- HBL (House Bill of Lading)
+- MBLU (MBL Universal)
+
+================================================================
+ESTADOS Y STATUS DEL SISTEMA
+================================================================
+
+ESTADOS DE BOOKING:
+- DEV (Desarrollo)
+- RSA (Respuesta de Agente)
+
+ESTADOS DE DOCUMENTACIÓN:
+- Pendiente
+- Confirmado
+- Guardado en eDocs
+
+ESTADOS DE PAGO:
+- Solicitado
+- Confirmado
+- Procesado
+
+ESTADOS FINALES:
+- Cerrar Tráfico + CSO
+- Rechazar Embarque
+
+================================================================
+TIEMPOS Y PLAZOS CRÍTICOS
+================================================================
+
+PLAZOS ESPECÍFICOS:
+1. Confirmación de Booking: 48h CDN - BHP
+2. Máximo 1 hora entre Creación Booking & Envío BL
+3. Plazo máximo 24h post ETD
+4. Filtro de 3 meses para descuentos
+5. Plazos específicos para pre-alerta según regulaciones
+6. Tiempos de entrega de B/L
+7. Plazos de DUA
+
+================================================================
+RESUMEN EJECUTIVO
+================================================================
+
+Este diagrama BPMN representa un sistema integral de gestión logística que abarca:
+
+1. **ALCANCE COMPLETO**: Desde la creación inicial del booking hasta el cierre financiero
+2. **MÚLTIPLES ACTORES**: 6 departamentos/roles diferentes involucrados
+3. **PROCESO COMPLEJO**: 6 fases principales con múltiples subprocesos
+4. **CONTROL RIGUROSO**: Múltiples puntos de decisión y filtros de validación
+5. **DOCUMENTACIÓN INTEGRAL**: Sistema completo de gestión de documentos electrónicos
+6. **GESTIÓN FINANCIERA**: Control completo de facturación, pagos y cobros
+7. **SEGUIMIENTO OPERATIVO**: Tracking y milestones en cada fase
+
+El sistema está diseñado para manejar operaciones logísticas complejas con múltiples stakeholders, asegurando trazabilidad completa, control de calidad y cumplimiento regulatorio en cada etapa del proceso.
